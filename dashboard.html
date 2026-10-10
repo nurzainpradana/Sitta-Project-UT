@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard SITTA Universitas Terbuka">
+
+    <title>Dashboard | SITTA Universitas Terbuka</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
+</head>
+<body>
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>SITTA</h1>
+                <p>Universitas Terbuka</p>
+            </header>
+
+            <nav class="sidebar-nav" aria-label="Navigasi utama">
+                <a href="dashboard.html" class="nav-link active"
+                   aria-current="page">
+                    Dashboard
+                </a>
+
+                <a href="stok.html" class="nav-link">
+                    Informasi Bahan Ajar
+                </a>
+
+                <a href="tracking.html" class="nav-link">
+                    Tracking Pengiriman
+                </a>
+
+                <details class="nav-group">
+                    <summary>Laporan</summary>
+                    <div class="nav-submenu">
+                        <a href="monitoring.html" class="nav-link"
+                           >
+                            Monitoring Progress DO Bahan Ajar
+                        </a>
+
+                        <a href="rekap.html" class="nav-link"
+                           >
+                            Rekap Bahan Ajar
+                        </a>
+                    </div>
+                </details>
+
+                <a href="histori.html" class="nav-link">
+                    Histori Transaksi Bahan Ajar
+                </a>
+            </nav>
+
+            <footer class="sidebar-footer">
+                <button type="button" id="logoutBtn">
+                    Logout
+                </button>
+            </footer>
+        </aside>
+
+
+        <!-- KONTEN UTAMA -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <p>Portal Administrasi Bahan Ajar</p>
+
+                <div id="userInfo">
+                    Memuat informasi pengguna...
+                </div>
+            </header>
+
+            <section class="page-content">
+
+                <!-- SAPAAN -->
+                <header class="page-header">
+                    <p id="greeting">Selamat datang</p>
+
+                    <h2>Dashboard Aplikasi SITTA</h2>
+
+                    <p>
+                        Sistem Informasi Tiras dan Transaksi Bahan Ajar
+                        Universitas Terbuka.
+                    </p>
+                </header>
+
+
+                <!-- INFORMASI PENGGUNA -->
+                <section class="content-card">
+                    <h3>Informasi Pengguna</h3>
+
+                    <div class="tracking-summary">
+                        <div class="tracking-info">
+                            <span class="info-label">Nama Pengguna</span>
+                            <span class="info-value" id="userName">-</span>
+                        </div>
+
+                        <div class="tracking-info">
+                            <span class="info-label">Email</span>
+                            <span class="info-value" id="userEmail">-</span>
+                        </div>
+
+                        <div class="tracking-info">
+                            <span class="info-label">Role</span>
+                            <span class="info-value" id="userRole">-</span>
+                        </div>
+
+                        <div class="tracking-info">
+                            <span class="info-label">Lokasi</span>
+                            <span class="info-value" id="userLocation">-</span>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- RINGKASAN DATA -->
+                <section class="dashboard-cards"
+                         aria-label="Ringkasan aplikasi">
+
+                    <article class="dashboard-card">
+                        <h3>Informasi Bahan Ajar</h3>
+
+                        <p>
+                            Jumlah jenis bahan ajar yang tersedia pada
+                            data simulasi.
+                        </p>
+
+                        <p>
+                            <strong id="totalBahanAjar">0</strong>
+                            jenis bahan ajar
+                        </p>
+
+                        <a href="stok.html">Lihat Bahan Ajar</a>
+                    </article>
+
+                    <article class="dashboard-card">
+                        <h3>Tracking Pengiriman</h3>
+
+                        <p>
+                            Pantau informasi dan riwayat pengiriman
+                            bahan ajar.
+                        </p>
+
+                        <p>
+                            <strong id="totalTracking">0</strong>
+                            transaksi pengiriman
+                        </p>
+
+                        <a href="tracking.html">Lacak Pengiriman</a>
+                    </article>
+
+                </section>
+
+
+                <!-- PINTASAN NOMOR DO -->
+                <section class="content-card mt-3">
+                    <h3>Pintasan Tracking</h3>
+
+                    <p class="text-muted">
+                        Pilih salah satu nomor DO dari data simulasi
+                        untuk membuka halaman tracking.
+                    </p>
+
+                    <div id="trackingShortcuts"></div>
+                </section>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Bahan Ajar | SITTA Praktik</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/rekap.js" defer></script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>SITTA</h1>
+                <p>Universitas Terbuka</p>
+            </header>
+
+            <nav class="sidebar-nav" aria-label="Navigasi utama">
+                <a href="dashboard.html" class="nav-link"
+                   aria-current="page">
+                    Dashboard
+                </a>
+
+                <a href="stok.html" class="nav-link">
+                    Informasi Bahan Ajar
+                </a>
+
+                <a href="tracking.html" class="nav-link">
+                    Tracking Pengiriman
+                </a>
+
+                <details class="nav-group">
+                    <summary>Laporan</summary>
+                    <div class="nav-submenu">
+                        <a href="monitoring.html" class="nav-link"
+                           >
+                            Monitoring Progress DO Bahan Ajar
+                        </a>
+
+                        <a href="rekap.html" class="nav-link active"
+                           >
+                            Rekap Bahan Ajar
+                        </a>
+                    </div>
+                </details>
+
+                <a href="histori.html" class="nav-link">
+                    Histori Transaksi Bahan Ajar
+                </a>
+            </nav>
+
+            <footer class="sidebar-footer">
+                <button type="button" id="logoutBtn">
+                    Logout
+                </button>
+            </footer>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Rekap Bahan Ajar</h1>
+                    <p>Laporan ringkasan persediaan bahan ajar.</p>
+                </div>
+                <div id="userInfo" class="user-info"></div>
+            </header>
+
+            <section class="page-content">
+                <div class="page-header">
+                    <div>
+                        <h2>Ringkasan Persediaan</h2>
+                        <p>Rekap berdasarkan data bahan ajar yang tersedia.</p>
+                    </div>
+                    <button type="button" id="printReport" class="btn-primary">
+                        Cetak Laporan
+                    </button>
+                </div>
+
+                <div class="rekap-summary">
+                    <article class="rekap-card">
+                        <div class="rekap-card-icon">▤</div>
+                        <div>
+                            <p>Jenis Bahan Ajar</p>
+                            <h3 id="totalJenis">0</h3>
+                        </div>
+                    </article>
+
+                    <article class="rekap-card">
+                        <div class="rekap-card-icon">▥</div>
+                        <div>
+                            <p>Total Stok</p>
+                            <h3 id="totalStok">0</h3>
+                        </div>
+                    </article>
+
+                    <article class="rekap-card">
+                        <div class="rekap-card-icon">⌖</div>
+                        <div>
+                            <p>Kode Lokasi</p>
+                            <h3 id="totalLokasi">0</h3>
+                        </div>
+                    </article>
+                </div>
+
+                <section class="content-card" id="rekapReport">
+                    <div class="section-header">
+                        <div>
+                            <h2>Daftar Rekap Bahan Ajar</h2>
+                            <p id="rekapCount">Memuat data...</p>
+                        </div>
+                    </div>
+
+                    <form id="rekapFilterForm">
+                        <div class="rekap-filter">
+                            <div class="form-group">
+                                <label for="searchRekap">Cari Bahan Ajar</label>
+                                <input
+                                    type="search"
+                                    id="searchRekap"
+                                    placeholder="Kode barang, nama, atau lokasi..."
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="filterJenis">Jenis Bahan Ajar</label>
+                                <select id="filterJenis">
+                                    <option value="">Semua jenis</option>
+                                </select>
+                            </div>
+
+                            <div class="rekap-filter-actions">
+                                <button type="submit" class="btn-primary">Terapkan</button>
+                                <button type="button" id="resetRekap" class="btn-outline">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="table-responsive">
+                        <table id="rekapTable">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Kode Lokasi</th>
+                                    <th>Kode Barang</th>
+                                    <th>Nama Bahan Ajar</th>
+                                    <th>Jenis</th>
+                                    <th>Edisi</th>
+                                    <th>Stok</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rekapTableBody">
+                                <tr>
+                                    <td colspan="7">Memuat data...</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="6">Total Stok pada Hasil Filter</th>
+                                    <th id="rekapTotalFilter">0</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <p class="rekap-note">
+                        Catatan: laporan ini dihitung dari data bahan ajar yang tersedia
+                        pada sesi aplikasi saat ini.
+                    </p>
+                </section>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

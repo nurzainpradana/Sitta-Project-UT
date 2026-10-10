@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Progress DO | SITTA Praktik</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/monitoring.js" defer></script>
+</head>
+<body>
+    <div class="app-layout">
+       <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>SITTA</h1>
+                <p>Universitas Terbuka</p>
+            </header>
+
+            <nav class="sidebar-nav" aria-label="Navigasi utama">
+                <a href="dashboard.html" class="nav-link"
+                   aria-current="page">
+                    Dashboard
+                </a>
+
+                <a href="stok.html" class="nav-link">
+                    Informasi Bahan Ajar
+                </a>
+
+                <a href="tracking.html" class="nav-link">
+                    Tracking Pengiriman
+                </a>
+
+                <details class="nav-group">
+                    <summary>Laporan</summary>
+                    <div class="nav-submenu">
+                        <a href="monitoring.html" class="nav-link active"
+                           >
+                            Monitoring Progress DO Bahan Ajar
+                        </a>
+
+                        <a href="rekap.html" class="nav-link"
+                           >
+                            Rekap Bahan Ajar
+                        </a>
+                    </div>
+                </details>
+
+                <a href="histori.html" class="nav-link">
+                    Histori Transaksi Bahan Ajar
+                </a>
+            </nav>
+
+            <footer class="sidebar-footer">
+                <button type="button" id="logoutBtn">
+                    Logout
+                </button>
+            </footer>
+        </aside>
+
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Monitoring Progress DO</h1>
+                    <p>Pantau status pengiriman bahan ajar.</p>
+                </div>
+                <div id="userInfo" class="user-info"></div>
+            </header>
+
+            <section class="page-content">
+                <div class="page-header">
+                    <div>
+                        <h2>Ringkasan Pengiriman</h2>
+                        <p>Ringkasan berdasarkan data tracking yang tersedia.</p>
+                    </div>
+                </div>
+
+                <div class="monitoring-summary">
+                    <article class="monitoring-card">
+                        <span class="monitoring-card-icon">▥</span>
+                        <div>
+                            <p>Total Delivery Order</p>
+                            <h3 id="totalDO">0</h3>
+                        </div>
+                    </article>
+
+                    <article class="monitoring-card">
+                        <span class="monitoring-card-icon">➜</span>
+                        <div>
+                            <p>Dalam Perjalanan</p>
+                            <h3 id="totalTransit">0</h3>
+                        </div>
+                    </article>
+
+                    <article class="monitoring-card">
+                        <span class="monitoring-card-icon">✓</span>
+                        <div>
+                            <p>Dikirim</p>
+                            <h3 id="totalDikirim">0</h3>
+                        </div>
+                    </article>
+                </div>
+
+                <section class="content-card">
+                    <div class="section-header">
+                        <div>
+                            <h2>Daftar Monitoring DO</h2>
+                            <p id="monitoringCount">Memuat data...</p>
+                        </div>
+                    </div>
+
+                    <form id="monitoringSearchForm">
+                        <div class="monitoring-search">
+                            <input
+                                type="search"
+                                id="searchDO"
+                                placeholder="Cari nomor DO atau nama penerima..."
+                                aria-label="Cari nomor DO atau nama penerima"
+                            >
+                            <button type="submit" class="btn-primary">Cari</button>
+                            <button type="button" id="resetSearch" class="btn-outline">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="monitoringMessage" role="status" aria-live="polite"></div>
+
+                    <div class="table-responsive">
+                        <table id="monitoringTable">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nomor DO</th>
+                                    <th>Nama Penerima</th>
+                                    <th>Ekspedisi</th>
+                                    <th>Tanggal Kirim</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="monitoringTableBody">
+                                <tr>
+                                    <td colspan="7">Memuat data...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

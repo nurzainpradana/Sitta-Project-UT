@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informasi Stok Bahan Ajar | SITTA Praktik</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/data.js" defer></script>
+    <script src="js/stok.js" defer></script>
+  </head>
+  <body>
+    <div class="app-layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <header class="sidebar-header">
+          <h1>SITTA</h1>
+          <p>Universitas Terbuka</p>
+        </header>
+
+        <nav class="sidebar-nav" aria-label="Navigasi utama">
+          <a href="dashboard.html" class="nav-link" aria-current="page">
+            Dashboard
+          </a>
+
+          <a href="stok.html" class="nav-link active"> Informasi Bahan Ajar </a>
+
+          <a href="tracking.html" class="nav-link"> Tracking Pengiriman </a>
+
+          <details class="nav-group">
+            <summary>Laporan</summary>
+            <div class="nav-submenu">
+              <a href="monitoring.html" class="nav-link">
+                Monitoring Progress DO Bahan Ajar
+              </a>
+
+              <a href="rekap.html" class="nav-link"> Rekap Bahan Ajar </a>
+            </div>
+          </details>
+
+          <a href="histori.html" class="nav-link">
+            Histori Transaksi Bahan Ajar
+          </a>
+        </nav>
+
+        <footer class="sidebar-footer">
+          <button type="button" id="logoutBtn">Logout</button>
+        </footer>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <h1>Informasi Stok Bahan Ajar</h1>
+            <p>Kelola informasi persediaan bahan ajar.</p>
+          </div>
+          <div id="userInfo" class="user-info" aria-live="polite"></div>
+        </header>
+
+        <section class="page-content">
+          <div class="page-header">
+            <div>
+              <h2>Daftar Bahan Ajar</h2>
+              <p>Informasi kode lokasi, kode barang, edisi, dan jumlah stok.</p>
+            </div>
+            <button type="button" id="toggleStockForm" class="btn-primary">
+              + Tambah Bahan Ajar
+            </button>
+          </div>
+
+          <div id="stockMessage" role="status" aria-live="polite"></div>
+
+          <section id="stockFormSection" class="content-card" hidden>
+            <div class="section-header">
+              <h3>Form Tambah Bahan Ajar</h3>
+            </div>
+
+            <form id="stockForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="kodeLokasi">Kode Lokasi</label>
+                  <input
+                    type="text"
+                    id="kodeLokasi"
+                    name="kodeLokasi"
+                    placeholder="Contoh: 0JKT01"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="kodeBarang">Kode Barang</label>
+                  <input
+                    type="text"
+                    id="kodeBarang"
+                    name="kodeBarang"
+                    placeholder="Contoh: EKMA4216"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="namaBarang">Nama Bahan Ajar</label>
+                  <input
+                    type="text"
+                    id="namaBarang"
+                    name="namaBarang"
+                    placeholder="Masukkan nama bahan ajar"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="jenisBarang">Jenis Barang</label>
+                  <select id="jenisBarang" name="jenisBarang" required>
+                    <option value="">Pilih jenis barang</option>
+                    <option value="BMP">BMP</option>
+                    <option value="Suplemen">Suplemen</option>
+                    <option value="Bahan Ajar Digital">
+                      Bahan Ajar Digital
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="edisi">Edisi</label>
+                  <input
+                    type="number"
+                    id="edisi"
+                    name="edisi"
+                    min="1"
+                    step="1"
+                    placeholder="Contoh: 2"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="stok">Jumlah Stok</label>
+                  <input
+                    type="number"
+                    id="stok"
+                    name="stok"
+                    min="0"
+                    step="1"
+                    placeholder="Contoh: 100"
+                    required
+                  />
+                </div>
+
+                <div class="form-group form-group-full">
+                  <label for="cover">Nama File Sampul (opsional)</label>
+                  <input
+                    type="text"
+                    id="cover"
+                    name="cover"
+                    placeholder="Contoh: kepemimpinan.jpg"
+                  />
+                  <small>
+                    Masukkan nama file gambar yang tersedia di folder img.
+                    Kosongkan jika belum ada gambar.
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                  Simpan Bahan Ajar
+                </button>
+                <button type="reset" id="resetStockForm" class="btn-outline">
+                  Reset
+                </button>
+                <button type="button" id="cancelStockForm" class="btn-outline">
+                  Batal
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <section class="content-card">
+            <div class="section-header">
+              <div>
+                <h3>Data Persediaan</h3>
+                <p id="stockCount">Memuat data bahan ajar...</p>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table id="stockTable">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Sampul</th>
+                    <th>Kode Lokasi</th>
+                    <th>Kode Barang</th>
+                    <th>Nama Bahan Ajar</th>
+                    <th>Jenis</th>
+                    <th>Edisi</th>
+                    <th>Stok</th>
+                  </tr>
+                </thead>
+                <tbody id="stockTableBody">
+                  <tr>
+                    <td colspan="8">Memuat data...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+    <!-- Modal Preview Cover Bahan Ajar -->
+    <div id="coverPreviewModal" class="cover-preview-modal" aria-hidden="true">
+      <div
+        class="cover-preview-content"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Preview cover bahan ajar"
+      >
+        <button
+          type="button"
+          id="closeCoverPreview"
+          class="cover-preview-close"
+          aria-label="Tutup preview"
+        >
+          &times;
+        </button>
+
+        <img id="coverPreviewImage" src="" alt="Preview cover bahan ajar" />
+        <p id="coverPreviewCaption"></p>
+      </div>
+    </div>
+  </body>
+</html>

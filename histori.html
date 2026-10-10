@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histori Transaksi | SITTA Praktik</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/histori.js" defer></script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>SITTA</h1>
+                <p>Universitas Terbuka</p>
+            </header>
+
+            <nav class="sidebar-nav" aria-label="Navigasi utama">
+                <a href="dashboard.html" class="nav-link"
+                   aria-current="page">
+                    Dashboard
+                </a>
+
+                <a href="stok.html" class="nav-link">
+                    Informasi Bahan Ajar
+                </a>
+
+                <a href="tracking.html" class="nav-link">
+                    Tracking Pengiriman
+                </a>
+
+                <details class="nav-group">
+                    <summary>Laporan</summary>
+                    <div class="nav-submenu">
+                        <a href="monitoring.html" class="nav-link"
+                           >
+                            Monitoring Progress DO Bahan Ajar
+                        </a>
+
+                        <a href="rekap.html" class="nav-link"
+                           >
+                            Rekap Bahan Ajar
+                        </a>
+                    </div>
+                </details>
+
+                <a href="histori.html" class="nav-link active">
+                    Histori Transaksi Bahan Ajar
+                </a>
+            </nav>
+
+            <footer class="sidebar-footer">
+                <button type="button" id="logoutBtn">
+                    Logout
+                </button>
+            </footer>
+        </aside>
+
+
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Histori Transaksi</h1>
+                    <p>Riwayat aktivitas transaksi bahan ajar.</p>
+                </div>
+                <div id="userInfo" class="user-info"></div>
+            </header>
+
+            <section class="page-content">
+                <div class="page-header">
+                    <div>
+                        <h2>Ringkasan Transaksi</h2>
+                        <p>Pantau riwayat barang masuk dan barang keluar.</p>
+                    </div>
+
+                    <button type="button" id="printHistori" class="btn-primary">
+                        Cetak Laporan
+                    </button>
+                </div>
+
+                <div class="histori-summary">
+                    <article class="histori-card">
+                        <div class="histori-card-icon">▤</div>
+                        <div>
+                            <p>Total Transaksi</p>
+                            <h3 id="totalTransaksi">0</h3>
+                        </div>
+                    </article>
+
+                    <article class="histori-card">
+                        <div class="histori-card-icon">↓</div>
+                        <div>
+                            <p>Barang Masuk</p>
+                            <h3 id="totalMasuk">0</h3>
+                        </div>
+                    </article>
+
+                    <article class="histori-card">
+                        <div class="histori-card-icon">↑</div>
+                        <div>
+                            <p>Barang Keluar</p>
+                            <h3 id="totalKeluar">0</h3>
+                        </div>
+                    </article>
+                </div>
+
+                <section class="content-card" id="historiReport">
+                    <div class="section-header">
+                        <div>
+                            <h2>Daftar Histori Transaksi</h2>
+                            <p id="historiCount">Memuat data...</p>
+                        </div>
+                    </div>
+
+                    <form id="historiFilterForm">
+                        <div class="histori-filter">
+                            <div class="form-group">
+                                <label for="searchHistori">Cari Transaksi</label>
+                                <input
+                                    type="search"
+                                    id="searchHistori"
+                                    placeholder="Nomor transaksi, kode, atau nama bahan ajar..."
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="filterTransaksi">Jenis Transaksi</label>
+                                <select id="filterTransaksi">
+                                    <option value="">Semua transaksi</option>
+                                    <option value="Masuk">Barang Masuk</option>
+                                    <option value="Keluar">Barang Keluar</option>
+                                </select>
+                            </div>
+
+                            <div class="histori-filter-actions">
+                                <button type="submit" class="btn-primary">
+                                    Terapkan
+                                </button>
+                                <button type="button" id="resetHistori" class="btn-outline">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="table-responsive">
+                        <table id="historiTable">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Tanggal</th>
+                                    <th>No. Transaksi</th>
+                                    <th>Jenis</th>
+                                    <th>Kode Barang</th>
+                                    <th>Nama Bahan Ajar</th>
+                                    <th>Jumlah</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historiTableBody">
+                                <tr>
+                                    <td colspan="8">Memuat data...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="histori-note">
+                        Data histori pada halaman ini merupakan data dummy untuk
+                        demonstrasi SITTA Praktik.
+                    </p>
+                </section>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
